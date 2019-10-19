@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <h1 class="heading">Create a new task</h1>
+    <form action="/tasks/new" method="POST">
+      <input type="text" name="description" placeholder="write your task"/>
+      <input type="submit" />
+    </form>
+    <br/>
+    <h1 class="heading2">Created tasks:</h1>
+    <ul id="task-area">
+    </ul>
+
+    <div id="update-area"></div>
+    <script>
+      fetch("/tasks").then(function(res){
+        res.json().then(function(data){
+          data.forEach(function(task){
+            let taskhtml = document.createElement('li');
+            let deletebutton = document.createElement('button');
+            let updatebutton = document.createElement('button');
+            deletebutton.innerHTML = "Delete";
+            deletebutton.id = "delbtn";
+            updatebutton.innerHTML = "Update";
+            updatebutton.id = "updtbtn";
+            taskhtml.id = "task";
+            taskhtml.onmouseover="document.getElementById(task).style.backgroundColor = 'yellow';"
+            updatebutton.addEventListener('click',function(){
+              updatetask(task._id,task.description);
+            })
+
+            deletebutton.addEventListener('click',function(){
+              deletetask(task._id);
+            })
+
+            taskhtml.innerText = task.description;
+            document.getElementById('task-area').append(taskhtml);
+            document.getElementById('task-area').append(deletebutton);
+            document.getElementById('task-area').append(updatebutton);
+          })
+        })
+      })
+
+      function updatetask(objectid,description){
+        let input = document.createElement('input');
+        input.placeholder = description;
+        input.id = "updateinput";
+        let submitupdate = document.createElement('button');
+        submitupdate.innerText = "submit changes";
+        submitupdate.id = "submitbtn";
+        submitupdate.addEventListener('click',function(){
+          fetch('/tasks/update/'+objectid,{method:'PUT',body:JSON.stringify({
+            description: document.getElementById('updateinput').value,
+          }),headers:{
+            "Content-Type":"application/json"
+          }});
+          window.location.reload();
+        })
+        document.getElementById('update-area').append(input);
+        document.getElementById('update-area').append(submitupdate);
+      }
+
+      function deletetask(objectid){
+        fetch('/tasks/delete/'+objectid,{method: 'DELETE'});
+        window.location.reload();
+      }
+    </script>
+  </body>
+</html>

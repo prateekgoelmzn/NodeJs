@@ -1,0 +1,93 @@
+form{
+  text-align: center;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid blue;
+}
+#updateinput{
+  border: 2px solid blue;
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#submitbtn{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=text]:focus{
+  border: 2px solid blue;
+  border-radius: 4px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.heading{
+  padding: 30px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+  border: 1px solid #1abc9c;
+  border-radius: 15px;
+}
+.heading2{
+  text-align: center;
+  background: white;
+  color: black;
+  font-size: 30px;
+  border: 1px solid blue;
+  border-radius: 15px;
+}
+
+#delbtn{
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 15px;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#updtbtn{
+  background-color: orange;
+  border: 1px solid orange;
+  border-radius: 15px;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#task{
+  font-size: 30px;
+}
+
+li:hover{
+  background-color: yellow;
+}
